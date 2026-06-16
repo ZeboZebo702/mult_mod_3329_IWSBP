@@ -1,0 +1,22 @@
+// Benchmark "D:\BF_in_AO\mult_mod_3329\Truth_bables\extended\minimization_strong\mult_3_2_12_strong" written by ABC on Tue Mar 10 22:38:32 2026
+
+module mult_3_2_12_strong ( 
+    x0, x1, x2,
+    z00, z01, z02, z03, z04, z05, z06, z07, z08, z09, z10, z11  );
+  input  x0, x1, x2;
+  output z00, z01, z02, z03, z04, z05, z06, z07, z08, z09, z10, z11;
+  assign z00 = x0 ? (~x1 & ~x2) : (x1 & x2);
+  assign z01 = x1 & (x0 | (~x0 & ~x2));
+  assign z02 = x0 ? (x1 ^ ~x2) : (~x1 & x2);
+  assign z03 = x1 ? (x0 ^ ~x2) : x0;
+  assign z04 = (~x0 & ~x1 & x2) | x0 | (~x0 & x1);
+  assign z05 = (~x0 & ~x1 & x2) | x0 | (~x0 & x1);
+  assign z06 = (~x0 & ~x1 & x2) | x0 | (~x0 & x1);
+  assign z07 = (~x0 & ~x1 & x2) | x0 | (~x0 & x1);
+  assign z08 = (~x0 & ~x1 & x2) | x0 | (~x0 & x1);
+  assign z09 = x0 ? (~x1 & ~x2) : (x1 | (~x1 & x2));
+  assign z10 = x0 ? (~x1 & x2) : (x1 ^ x2);
+  assign z11 = x0 ? (x1 & ~x2) : x2;
+endmodule
+
+
