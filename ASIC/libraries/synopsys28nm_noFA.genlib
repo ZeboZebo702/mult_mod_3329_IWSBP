@@ -1,0 +1,106 @@
+# Synopsys 28nm Standard Cell Library for ABC
+# Based on Synopsys Fusion Compiler 28nm technology
+# Generated from Synopsys_library_claude.docx element descriptions
+#
+# Format: GATE <name> <area> <output>=<function>;
+#         PIN * <phase> <input_load> <max_load> <rise_delay> <fall_delay> <rise_time> <fall_time>
+#
+# Notes:
+# - Area values are from Synopsys 28nm library (relative units)
+# - Timing values are nominal placeholders (1.0) since exact timing data
+#   is not available; for area-only optimization this is sufficient
+# - ABC uses this for technology mapping (map command)
+
+# ============================================================
+# Constant generators
+# ============================================================
+GATE zero       0.00    Y=CONST0;
+GATE one        0.00    Y=CONST1;
+
+# ============================================================
+# Buffer / Inverter
+# ============================================================
+GATE INV        0.34    Y=!a;           PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# Basic AND gates
+# ============================================================
+GATE AN2        0.68    Y=a*b;          PIN * NONINV 1 999 1.0 1.0 1.0 1.0
+GATE AN3        0.84    Y=a*b*c;        PIN * NONINV 1 999 1.0 1.0 1.0 1.0
+GATE AN4        1.01    Y=a*b*c*d;      PIN * NONINV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# Basic OR gate
+# ============================================================
+GATE OR2        0.68    Y=a+b;          PIN * NONINV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# NAND gates
+# ============================================================
+GATE ND2        0.51    Y=!(a*b);       PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE ND2B       0.68    Y=!(a*!b);      PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+GATE ND3        0.68    Y=!(a*b*c);     PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# NOR gate
+# ============================================================
+GATE NR2        0.51    Y=!(a+b);       PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# AND-OR (AO) gates
+# ============================================================
+GATE AO21       0.84    Y=(a*b)+c;      PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+GATE AO21B      0.84    Y=(a*!b)+c;     PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+GATE AO211      1.01    Y=(a*b)+c+d;    PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+GATE AO22       1.01    Y=(a*b)+(c*d);  PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# AND-OR-Invert (AOI) gates
+# ============================================================
+GATE AOI21      0.68    Y=!((a*b)+c);                   PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE AOI211     0.84    Y=!((a*b)+c+d);                 PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE AOI22      0.84    Y=!((a*b)+(c*d));               PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE AOI221     1.01    Y=!((a*b)+(c*d)+e);             PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE AOI31      0.84    Y=!((a*b*c)+d);                 PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE AOI32      1.01    Y=!((a*b*c)+(d*e));             PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE AOI33      1.18    Y=!((a*b*c)+(d*e*f));           PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# OR-AND (OA) gates
+# ============================================================
+GATE OA21       0.84    Y=(a+b)*c;      PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+GATE OA21B      0.84    Y=(a+!b)*c;     PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# OR-AND-Invert (OAI) gates
+# ============================================================
+GATE OAI21      0.68    Y=!((a+b)*c);                   PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE OAI211     0.84    Y=!((a+b)*c*d);                 PIN * INV 1 999 1.0 1.0 1.0 1.0
+GATE OAI32      1.01    Y=!((a+b+c)*(d+e));             PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# Complex gates (AOA, AOAI, OAOI)
+# ============================================================
+# AOA211: Y = ((A|B) & (C|D)) | E  — per Synopsys doc function
+GATE AOA211     1.01    Y=((a+b)*(c+d))+e;              PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+
+# AOAI211: Y = !(((A|B) & (C|D)) | E)
+GATE AOAI211    0.84    Y=!(((a+b)*(c+d))+e);           PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# OAOI211: Y = !((A|B) & C & (D|E))  — per Synopsys doc
+GATE OAOI211    0.84    Y=!((a+b)*c*(d+e));             PIN * INV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# XOR / Special gates
+# ============================================================
+GATE EO2        1.52    Y=a^b;          PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
+
+# EN2 is functionally identical to AN2 but listed separately
+GATE EN2        1.35    Y=a*b;          PIN * NONINV 1 999 1.0 1.0 1.0 1.0
+
+# ============================================================
+# MUX (inverted output)
+# MUXI2: Y = !S*A + S*!B  (inverted mux)
+# In ABC genlib, we express this as: Y = (!s*a) + (s*!b)
+# ============================================================
+GATE MUXI2      1.01    Y=(!s*a)+(s*!b);    PIN * UNKNOWN 1 999 1.0 1.0 1.0 1.0
