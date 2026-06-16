@@ -1,0 +1,228 @@
+// Benchmark "mult_3x3_2_18_exact" written by ABC on Tue Apr 14 21:29:33 2026
+
+module mult_3x3_2_18_exact_3_lut ( 
+    x0, x1, x2, x3, x4, x5,
+    z00, z01, z02, z03, z04, z05, z06, z07, z08, z09, z10, z11  );
+  input  x0, x1, x2, x3, x4, x5;
+  output z00, z01, z02, z03, z04, z05, z06, z07, z08, z09, z10, z11;
+  wire n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n33, n34,
+    n35, n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46, n47, n48,
+    n49, n50, n51, n52, n53, n55, n56, n57, n58, n59, n60, n61, n62, n63,
+    n64, n65, n66, n67, n68, n69, n71, n72, n73, n74, n75, n76, n77, n78,
+    n79, n80, n81, n82, n83, n84, n85, n86, n87, n88, n90, n91, n92, n93,
+    n94, n95, n96, n97, n98, n99, n100, n101, n102, n103, n104, n105, n106,
+    n108, n109, n110, n111, n112, n113, n114, n115, n116, n117, n118, n119,
+    n121, n122, n123, n124, n125, n126, n127, n128, n129, n130, n131, n132,
+    n133, n134, n135, n136, n138, n139, n140, n141, n142, n143, n144, n145,
+    n146, n147, n148, n149, n150, n151, n152, n153, n154, n156, n157, n158,
+    n159, n160, n161, n162, n163, n164, n165, n166, n167, n168, n169, n171,
+    n172, n173, n174, n175, n176, n177, n178, n179, n180, n181, n182, n183,
+    n184, n185, n187, n188, n189, n190, n191, n192, n193, n194, n195, n196,
+    n197, n198, n199, n200, n201, n202, n203, n205, n206, n207, n208, n209,
+    n210, n211, n212, n213, n214, n215, n216, n217, n218, n219, n220, n221;
+  assign z00 = ~n24 | (x3 & ~n20);
+  assign n20 = ~n22 & (x2 | n21);
+  assign n21 = x0 ? (x1 | ~x5) : (~x1 | x5);
+  assign n22 = ~n23 & x2 & x5;
+  assign n23 = (x1 | x4) & (x0 | ~x1 | ~x4);
+  assign n24 = ~n27 & (n25 | n26);
+  assign n25 = (~x3 | x5) & (x1 | x3 | ~x5);
+  assign n26 = x2 ? x4 : ~x0;
+  assign n27 = n31 & (n28 | n29);
+  assign n28 = x1 & (x2 ^ ~x5);
+  assign n29 = n30 & ~x2 & ~x5;
+  assign n30 = x0 & ~x1;
+  assign n31 = ~x3 & x4;
+  assign z01 = ~n41 | (~x5 & ~n33);
+  assign n33 = ~n34 & (~x4 | n37);
+  assign n34 = ~n35 & ~n36;
+  assign n35 = x0 ? (x1 | x2) : (~x1 | ~x2);
+  assign n36 = x3 ^ ~x4;
+  assign n37 = ~n39 & (x3 | n38);
+  assign n38 = (~x1 & ~x2) | (~x0 & x1 & x2);
+  assign n39 = n40 & (x1 | n30);
+  assign n40 = x2 & x3;
+  assign n41 = ~n51 & ~n42 & ~n45;
+  assign n42 = n44 & x5 & ~n43;
+  assign n43 = x2 & (~x3 | ~x4);
+  assign n44 = x0 & x1;
+  assign n45 = ~x1 & (n46 | n49);
+  assign n46 = n47 & n48;
+  assign n47 = ~x3 & x5;
+  assign n48 = x0 & ~x2;
+  assign n49 = n50 & x3 & ~x5;
+  assign n50 = ~x0 & x2;
+  assign n51 = ~n53 & ~x2 & n52;
+  assign n52 = ~x0 & x1;
+  assign n53 = ~x3 & ~x5;
+  assign z02 = x2 ? ~n64 : ~n55;
+  assign n55 = n61 & (~x0 | n56);
+  assign n56 = ~n57 & (~n59 | ~n60);
+  assign n57 = n58 & x1 & ~x3;
+  assign n58 = ~x4 & x5;
+  assign n59 = ~x1 & x3;
+  assign n60 = x4 & ~x5;
+  assign n61 = ~n62 & (~n52 | ~n47);
+  assign n62 = ~n63 & x0 & x3;
+  assign n63 = x1 ^ ~x5;
+  assign n64 = x1 ? n67 : n65;
+  assign n65 = x0 ? n66 : ~x4;
+  assign n66 = x3 ? (x4 | x5) : (~x4 | ~x5);
+  assign n67 = x4 ? n68 : n69;
+  assign n68 = x0 ? (~x3 | ~x5) : (x3 | x5);
+  assign n69 = (~x5 & (~x0 | ~x3)) | (x0 & x3 & x5);
+  assign z03 = x5 ? ~n71 : ~n83;
+  assign n71 = n76 & (~x0 | n72);
+  assign n72 = ~n74 & (~x1 | n73);
+  assign n73 = x2 ? (~x3 | x4) : (x3 | ~x4);
+  assign n74 = n75 & (x3 ^ ~x4);
+  assign n75 = ~x1 & x2;
+  assign n76 = ~n80 & ~n77 & ~n79;
+  assign n77 = ~x0 & ~n78;
+  assign n78 = (~x2 | x3) & (~x1 | x2 | ~x3);
+  assign n79 = n30 & ~x2 & x3;
+  assign n80 = n81 & n82;
+  assign n81 = ~x4 & x2 & x3;
+  assign n82 = ~x0 & ~x1;
+  assign n83 = ~n87 & (~x0 | n84);
+  assign n84 = ~n86 & (~x3 | n85);
+  assign n85 = (x4 & (x1 | x2)) | (~x1 & ~x2 & ~x4);
+  assign n86 = x4 & x2 & ~x3;
+  assign n87 = n88 & x2 & n52;
+  assign n88 = x3 & x4;
+  assign z04 = x0 ? ~n98 : ~n90;
+  assign n90 = x3 ? n93 : n91;
+  assign n91 = ~n92 & (~n75 | ~n58);
+  assign n92 = n60 & x1 & ~x2;
+  assign n93 = ~n95 & (n94 | ~n97);
+  assign n94 = ~x2 ^ ~x4;
+  assign n95 = ~n96 & (~x1 ^ ~x2);
+  assign n96 = ~x4 ^ ~x5;
+  assign n97 = x1 & x5;
+  assign n98 = n102 & (~x2 | n99);
+  assign n99 = ~n101 & (~n59 | ~n100);
+  assign n100 = ~x4 & ~x5;
+  assign n101 = x4 & (~x1 ^ x5);
+  assign n102 = ~n105 & (n103 | n104);
+  assign n103 = x4 ^ ~x5;
+  assign n104 = (x1 & ~x2 & ~x3) | (x2 & (~x1 | x3));
+  assign n105 = n106 & x1 & ~x2;
+  assign n106 = ~x5 & x3 & ~x4;
+  assign z05 = x3 ? ~n108 : ~n114;
+  assign n108 = x1 ? n109 : n111;
+  assign n109 = x2 ? n110 : n103;
+  assign n110 = x0 ? (~x4 ^ ~x5) : (x4 & x5);
+  assign n111 = ~n113 & (~x2 | n112);
+  assign n112 = x4 & (~x0 ^ x5);
+  assign n113 = x5 & x0 & ~x2;
+  assign n114 = n117 & (~x0 | n115);
+  assign n115 = ~n92 & (~x5 | n116);
+  assign n116 = x1 ? (x2 ^ ~x4) : (x2 & ~x4);
+  assign n117 = ~n119 & (n103 | n118);
+  assign n118 = x0 ? (x1 | ~x2) : (~x1 | x2);
+  assign n119 = n82 & x2 & n60;
+  assign z06 = ~n131 | n121 | n127;
+  assign n121 = x1 & (n122 | n125);
+  assign n122 = x2 & (n123 | n124);
+  assign n123 = x5 & x0 & x3;
+  assign n124 = ~n36 & (~x0 ^ ~x5);
+  assign n125 = n48 & ~n126;
+  assign n126 = x3 ? (~x4 | x5) : ~x5;
+  assign n127 = ~x0 & ~n128;
+  assign n128 = ~n130 & (~x2 | n129);
+  assign n129 = (~x4 | x5) & (x1 | x4 | ~x5);
+  assign n130 = x5 & x1 & ~x2;
+  assign n131 = ~n132 & (~n30 | n134);
+  assign n132 = n133 & x2 & n30;
+  assign n133 = x4 & x5;
+  assign n134 = ~n136 & (~n135 | n103);
+  assign n135 = x2 & ~x3;
+  assign n136 = n133 & ~x2 & x3;
+  assign z07 = ~n145 | (x2 & ~n138);
+  assign n138 = x5 ? n139 : n142;
+  assign n139 = n141 & (x1 | n140);
+  assign n140 = x0 ? ~x3 : x4;
+  assign n141 = x0 ? (~x1 | x4) : (x1 | ~x4);
+  assign n142 = ~n144 & (~x0 | n143);
+  assign n143 = x1 ? (x3 | ~x4) : (~x3 | x4);
+  assign n144 = x4 & x1 & x3;
+  assign n145 = ~n151 & ~n146 & ~n148;
+  assign n146 = ~n147 & ~x2 & n44;
+  assign n147 = (~x4 & (~x3 | x5)) | (x3 & x4 & ~x5);
+  assign n148 = ~n149 & ~n150;
+  assign n149 = x2 ? (x3 | ~x5) : ~x3;
+  assign n150 = x0 ? (x1 | x4) : (~x1 | ~x4);
+  assign n151 = ~n152 & (n153 | n154);
+  assign n152 = x3 ^ ~x5;
+  assign n153 = n30 & ~x2 & x4;
+  assign n154 = n52 & x2 & ~x4;
+  assign z08 = x0 ? ~n161 : ~n156;
+  assign n156 = n158 & (~x1 | n157);
+  assign n157 = x2 ? (x3 | ~x4) : (~x3 | x4);
+  assign n158 = ~n159 & (~n75 | ~n88);
+  assign n159 = ~n160 & x4 & n97;
+  assign n160 = ~x2 ^ ~x3;
+  assign n161 = x3 ? n165 : n162;
+  assign n162 = n164 & (~n163 | ~n133);
+  assign n163 = x1 & x2;
+  assign n164 = x1 ? (x4 | ~x5) : (~x4 | x5);
+  assign n165 = ~n166 & ~n168;
+  assign n166 = ~n167 & (x1 | x4);
+  assign n167 = ~x2 ^ ~x5;
+  assign n168 = ~n169 & ~x1 & ~x4;
+  assign n169 = x2 ^ ~x5;
+  assign z09 = x1 ? ~n171 : ~n180;
+  assign n171 = n175 & (x2 | n172);
+  assign n172 = ~n174 & (~x5 | n173);
+  assign n173 = x4 ? ~x0 : ~x3;
+  assign n174 = n60 & ~x0 & ~x3;
+  assign n175 = ~n179 & ~n176 & ~n178;
+  assign n176 = ~n177 & ~x5 & n40;
+  assign n177 = ~x0 & ~x4;
+  assign n178 = ~n167 & x0 & x3;
+  assign n179 = n47 & n50;
+  assign n180 = x3 ? n181 : n183;
+  assign n181 = n182 & (~n48 | ~n100);
+  assign n182 = x0 ? ~x4 : (~x2 | x4);
+  assign n183 = ~n185 & (~x2 | n184);
+  assign n184 = x0 ? (x4 ^ ~x5) : (~x4 | ~x5);
+  assign n185 = n48 & n58;
+  assign z10 = ~n193 | (x3 & ~n187);
+  assign n187 = ~n191 & (~x0 | n188);
+  assign n188 = ~n190 & (~x4 | n189);
+  assign n189 = x1 ? (~x2 ^ ~x5) : (~x2 | x5);
+  assign n190 = n75 & n100;
+  assign n191 = n52 & ~n192;
+  assign n192 = x2 ? (x4 | ~x5) : (~x4 ^ ~x5);
+  assign n193 = n201 & ~n194 & ~n198;
+  assign n194 = ~n103 & (n195 | n197);
+  assign n195 = ~x1 & ~n196;
+  assign n196 = x0 ? x2 : (~x2 | x3);
+  assign n197 = n52 & ~x2 & ~x3;
+  assign n198 = x1 & (n199 | n200);
+  assign n199 = x0 & ~n157;
+  assign n200 = n50 & n88;
+  assign n201 = ~n80 & (n202 | ~n203);
+  assign n202 = x1 ? (x2 | ~x4) : ~x2;
+  assign n203 = x5 & x0 & ~x3;
+  assign z11 = n219 | n205 | n211;
+  assign n205 = ~x5 & ~n206;
+  assign n206 = ~n210 & (~x3 | n207);
+  assign n207 = ~n208 & (~x1 | n209);
+  assign n208 = ~x2 & x0 & ~x1;
+  assign n209 = (~x2 | ~x4) & (~x0 | x2 | x4);
+  assign n210 = n30 & n31;
+  assign n211 = ~x0 & (n212 | n215);
+  assign n212 = ~x3 & (n213 | n214);
+  assign n213 = n58 & x1 & ~x2;
+  assign n214 = n75 & n60;
+  assign n215 = x3 & (n216 | n218);
+  assign n216 = x5 & ~n217;
+  assign n217 = ~x2 & (~x1 | x4);
+  assign n218 = n100 & x1 & ~x2;
+  assign n219 = n221 & (n135 | n220);
+  assign n220 = x4 & x1 & ~x2;
+  assign n221 = x0 & x5;
+endmodule
+
+
