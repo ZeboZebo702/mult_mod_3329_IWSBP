@@ -1,0 +1,339 @@
+// Benchmark "mult_4x4_2_12_strong" written by ABC on Wed Apr 15 02:22:18 2026
+
+// === AUTO_INJECTED_FPGA_ATTRS ===
+(* use_dsp         = "no"          *)
+(* use_carry_chain = "no"          *)
+(* shreg_extract   = "no"          *)
+// === END AUTO_INJECTED_FPGA_ATTRS ===
+module mult_4x4_2_12_strong_5_lut ( 
+    x0, x1, x2, x3, x4, x5, x6, x7,
+    z00, z01, z02, z03, z04, z05, z06, z07, z08, z09, z10, z11  );
+  input  x0, x1, x2, x3, x4, x5, x6, x7;
+  output z00, z01, z02, z03, z04, z05, z06, z07, z08, z09, z10, z11;
+  wire n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35,
+    n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46, n48, n49, n50,
+    n51, n52, n53, n54, n55, n56, n57, n58, n59, n60, n61, n62, n63, n64,
+    n65, n66, n67, n68, n69, n70, n71, n72, n73, n74, n75, n76, n77, n79,
+    n80, n81, n82, n83, n84, n85, n86, n87, n88, n89, n90, n91, n92, n93,
+    n94, n95, n96, n97, n98, n99, n100, n101, n103, n104, n105, n106, n107,
+    n108, n109, n110, n111, n112, n113, n114, n115, n116, n117, n118, n119,
+    n120, n121, n122, n123, n124, n125, n126, n128, n129, n130, n131, n132,
+    n133, n134, n135, n136, n137, n138, n139, n140, n141, n142, n143, n144,
+    n145, n146, n147, n148, n149, n150, n151, n152, n153, n154, n155, n156,
+    n157, n158, n160, n161, n162, n163, n164, n165, n166, n167, n168, n169,
+    n170, n171, n172, n173, n174, n175, n176, n177, n178, n179, n180, n181,
+    n182, n183, n185, n186, n187, n188, n189, n190, n191, n192, n193, n194,
+    n195, n196, n197, n198, n199, n200, n201, n202, n203, n204, n205, n206,
+    n207, n208, n209, n211, n212, n213, n214, n215, n216, n217, n218, n219,
+    n220, n221, n222, n223, n224, n225, n226, n227, n228, n229, n231, n232,
+    n233, n234, n235, n236, n237, n238, n239, n240, n241, n242, n243, n244,
+    n245, n246, n247, n248, n249, n250, n251, n252, n253, n254, n255, n256,
+    n258, n259, n260, n261, n262, n263, n264, n265, n266, n267, n268, n269,
+    n270, n271, n272, n273, n274, n275, n276, n277, n278, n279, n280, n281,
+    n283, n284, n285, n286, n287, n288, n289, n290, n291, n292, n293, n294,
+    n295, n296, n297, n298, n299, n300, n301, n302, n303, n304, n305, n307,
+    n308, n309, n310, n311, n312, n313, n314, n315, n316, n317, n318, n319,
+    n320;
+  assign z00 = n43 | (x4 ? (n22 | ~n25) : ~n32);
+  assign n22 = ~x1 & (x3 ? ~n23 : ~n24);
+  assign n23 = (~x0 | x5 | (~x7 & (x2 | ~x6))) & (x0 | x7 | (~x2 ^ ~x6)) & (x2 | ~x5 | x6);
+  assign n24 = (~x2 | ((x6 | (x0 ^ (x5 | x7))) & (x0 | ~x5 | ~x6 | ~x7))) & (~x0 | ((x2 | (x5 ? ~x6 : (x6 | x7))) & (~x5 | x6 | ~x7)));
+  assign n25 = ~n31 & (~x1 | (n27 & (~x5 | n26)));
+  assign n26 = (x2 | ((x0 | (x3 ? (x6 | x7) : ~x7)) & (x3 | (~x6 ^ x7)))) & (~x0 | ~x2 | ~x3 | ~x6 | ~x7);
+  assign n27 = (n28 | n29) & (x5 | x7 | n30);
+  assign n28 = x2 ? (x3 | ~x5) : (~x3 | x5);
+  assign n29 = x0 ? (x6 | x7) : (~x6 | ~x7);
+  assign n30 = (~x0 | (x2 ? x6 : (x3 | ~x6))) & (~x2 | ((~x3 | x6) & (x0 | x3 | ~x6)));
+  assign n31 = x5 & ~x6 & x7 & (x2 | x3);
+  assign n32 = ~n41 & (x2 ? (~n33 & n35) : n38);
+  assign n33 = ~x1 & ~n34;
+  assign n34 = (x0 | x6 | ((~x3 | x5 | ~x7) & (~x5 | x7))) & (~x3 | ~x5 | ~x7 | (~x0 & ~x6));
+  assign n35 = (x3 | n36) & (~n37 | (x6 ? ~x3 : ~x5));
+  assign n36 = (~x7 | (x0 ? (x5 | ~x6) : (~x1 | ~x5))) & (x1 | x7 | ((~x5 | ~x6) & (x0 | (~x5 & ~x6))));
+  assign n37 = ~x7 & x0 & x1;
+  assign n38 = x0 ? (x3 | n40) : n39;
+  assign n39 = x1 ? (x3 | (x5 ^ (~x6 & ~x7))) : (~x3 | (x5 ? (x6 | x7) : (~x6 | ~x7)));
+  assign n40 = (x1 | ~x6 | (~x5 ^ ~x7)) & (x6 | ~x7 | (~x1 & x5));
+  assign n41 = ~x7 & n42 & (~x3 ^ x5);
+  assign n42 = x6 & ~x0 & x1;
+  assign n43 = x1 & ((~x2 & ~n45) | (n44 & n46));
+  assign n44 = x7 & ~x5 & x6;
+  assign n45 = (~x3 | ((~x5 | x6 | ~x7) & (~x0 | (~x5 & ~x6)))) & (x6 | ~x7 | ~x0 | x5);
+  assign n46 = x3 & ~x0 & x2;
+  assign z01 = ~n74 | (x5 ? (n48 | ~n51) : ~n60);
+  assign n48 = x0 & (x3 ? ~n50 : ~n49);
+  assign n49 = x1 ? (x4 | ~x6) : ((~x7 | (x2 ? (x4 ^ x6) : (~x4 | x6))) & (x6 | x7 | x2 | x4));
+  assign n50 = x2 ? (~x4 | x7) : ((x4 | (~x7 & (x1 | ~x6))) & (~x1 | x6 | x7));
+  assign n51 = ~n58 & (x0 | (n53 & (x4 | n52)));
+  assign n52 = (~x3 | (x1 ? (x6 | x7) : (x2 ? (x6 | ~x7) : (~x6 | x7)))) & (~x1 | x7 | (x2 ? x6 : (x3 | ~x6)));
+  assign n53 = ~n55 & ~n56 & (~n54 | ~n57);
+  assign n54 = ~x1 & ~x2;
+  assign n55 = x1 & ((~x4 & x7 & ~x2 & ~x3) | (x2 & x4 & ~x7));
+  assign n56 = ~x7 & x4 & ~x3 & ~x1 & x2;
+  assign n57 = x7 & x3 & x6;
+  assign n58 = n59 & (x1 | x2 | x3);
+  assign n59 = x7 & x4 & ~x6;
+  assign n60 = ~n61 & ~n65 & n70 & (n68 | ~n69);
+  assign n61 = ~x2 & ((x6 & ~n62) | (n63 & n64));
+  assign n62 = (x4 | ((~x0 | (x1 ? x7 : (x3 | ~x7))) & (~x1 | ~x3 | ~x7))) & (~x0 | x1 | x3 | ~x4 | x7);
+  assign n63 = ~x3 & x0 & ~x1;
+  assign n64 = x7 & x4 & ~x6;
+  assign n65 = ~x0 & (x4 ? ~n66 : ~n67);
+  assign n66 = x7 ? ((~x3 | ~x6 | x1 | x2) & (~x1 | ~x2 | x3 | x6)) : (x1 ? (x2 | (x3 ^ x6)) : (~x2 | (x3 ^ ~x6)));
+  assign n67 = (x1 | ~x6 | ((~x2 | x3 | ~x7) & (~x3 | x7))) & (~x3 | x6 | ~x7 | ~x1 | ~x2);
+  assign n68 = (~x3 | x4 | ~x7) & (x1 | x3 | ~x4 | (x6 ^ x7));
+  assign n69 = x0 & x2;
+  assign n70 = (~n72 | ~n73) & (~x0 | x7 | n71);
+  assign n71 = (~x2 | ~x6 | (~x3 ^ ~x4)) & (~x4 | x6 | x2 | ~x3);
+  assign n72 = ~x3 & ~x0 & x2;
+  assign n73 = x7 & ~x4 & ~x6;
+  assign n74 = (~x3 | n76) & (~x0 | ~x1 | x3 | ~n75);
+  assign n75 = x7 & x4 & x6;
+  assign n76 = (~x1 | n77) & (x0 | x1 | ~x2 | ~n75);
+  assign n77 = (~x0 | x2 | (~x6 & ~x7)) & (x0 | ~x4 | x6 | ~x7);
+  assign z02 = (x5 & ~n79) | (~x5 & ~n89) | (~x2 & ~n99);
+  assign n79 = ~n81 & ~n85 & (~n80 | ~n88);
+  assign n80 = x6 & ~x3 & x4;
+  assign n81 = ~x7 & ((~x0 & ~n82) | n84 | (x0 & ~n83));
+  assign n82 = (x6 | ((~x1 | (~x2 ^ x3)) & (x2 | ~x3 | x4) & (x1 | ~x2 | ~x4))) & (~x1 | ~x6 | ((x3 | x4) & (~x2 | ~x3 | ~x4)));
+  assign n83 = x6 ? ((x1 | (~x2 & (x3 | ~x4))) & (x3 | ((~x2 | ~x4) & (~x1 | x2 | x4)))) : (x1 ? (~x2 ^ (~x3 & x4)) : (x2 | ~x3));
+  assign n84 = ~x6 & ~x4 & ~x3 & ~x1 & x2;
+  assign n85 = x7 & (x4 ? (x6 & ~n87) : ~n86);
+  assign n86 = (x0 & x2 & (x1 ? (~x3 & ~x6) : x6)) | (x6 & ((x1 & ~x2) | (~x0 & ~x3 & (x1 | ~x2)))) | (~x6 & ((~x1 & (~x2 | x3)) | (x3 & (~x0 | ~x2))));
+  assign n87 = (~x1 & (~x2 | x3)) | (x0 & ~x2 & x3) | (x1 & x2 & ~x3);
+  assign n88 = ~x2 & ~x0 & x1;
+  assign n89 = x3 ? (n95 & (x1 | n94)) : n90;
+  assign n90 = ~n93 & (x0 ? n92 : n91);
+  assign n91 = (~x6 | (x1 ? (x2 ? ~x4 : x7) : (~x2 | x7))) & (~x1 | x2 | x4 | x6 | ~x7);
+  assign n92 = x2 ? ((~x1 | ~x4 | (~x6 & x7)) & (x4 | (x6 ? x1 : ~x7))) : (~x7 | (x4 ? x1 : ~x6));
+  assign n93 = x1 & ~x2 & (x4 ? (~x6 & x7) : (x6 & ~x7));
+  assign n94 = (x0 | ((~x4 | ~x6) & (x6 | ~x7 | x2 | x4))) & (~x2 | ((~x4 | x6) & (~x0 | ~x7))) & (~x0 | ((~x6 | ~x7) & (~x4 | x6 | x7)));
+  assign n95 = (x0 | n98) & (~n96 | ~n97 | (~x0 & x4));
+  assign n96 = x6 & ~x7;
+  assign n97 = x1 & x2;
+  assign n98 = (~x1 | ((~x2 | (x6 ? x4 : ~x7)) & (~x4 | x7 | (x2 & x6)))) & (x2 | ~x4 | x6 | x7);
+  assign n99 = (x4 | ((~n100 | ~n63) & (~x1 | ~n101))) & (x1 | ~x4 | ~n101);
+  assign n100 = ~x6 & x7;
+  assign n101 = ~x7 & x6 & ~x0 & x3;
+  assign z03 = n103 | n111 | ~n122 | (x2 & ~n116);
+  assign n103 = ~x3 & (n104 | (~x2 & ~n108));
+  assign n104 = x2 & ((x0 & ~n105) | n107 | (~x0 & ~n106));
+  assign n105 = (x1 | ~x4 | (x5 ? (~x6 | ~x7) : (x6 | x7))) & (x4 | ((x5 | ~x6 | x7) & (~x1 | ~x5 | ~x7))) & (~x1 | x7 | (x5 ^ ~x6));
+  assign n106 = (~x1 | ((x4 | x5 | ~x6) & (x6 | x7 | ~x4 | ~x5))) & (~x6 | ((x4 | x7) & (x1 | ((x5 | x7) & (~x4 | ~x5 | ~x7))))) & (x6 | ~x7 | (~x4 ^ x5));
+  assign n107 = ~x1 & ((~x6 & x7 & ~x4 & ~x5) | (x6 & ~x7 & x4 & x5));
+  assign n108 = (~x1 | n109) & (~x4 | n110 | ~x0 | x1);
+  assign n109 = (~x0 | ((~x4 | x5 | x6) & (~x5 | ~x6 | x7))) & (~x7 | (x5 & (x0 | x4 | ~x6)));
+  assign n110 = x6 ? x5 : x7;
+  assign n111 = x3 & (n113 | (~x1 & x5 & n112));
+  assign n112 = ~x6 & ~x7;
+  assign n113 = ~x2 & (n115 | (~x0 & ~n114));
+  assign n114 = (x4 | ((~x5 | x6 | ~x7) & (~x1 | (x7 ? x5 : ~x6)))) & (~x5 | ~x6 | ~x7 | (x1 & ~x4));
+  assign n115 = ~x1 & x6 & ((~x5 & ~x7) | (x4 & x5 & x7));
+  assign n116 = (~x7 | ~n118) & (~x3 | (n119 & (~x7 | n117)));
+  assign n117 = (x5 | ((~x0 | (x1 ? x6 : (~x4 | ~x6))) & (~x1 | x4 | x6))) & (x0 | x4 | ~x5 | (~x1 ^ ~x6));
+  assign n118 = x0 & ~x4 & (x1 ? (x5 & ~x6) : x6);
+  assign n119 = (x7 | n121) & (x0 | ~x4 | ~n120);
+  assign n120 = ~x5 & x6;
+  assign n121 = (~x1 | (x0 ? (~x6 | (x4 & x5)) : (x6 | (x4 ^ ~x5)))) & (x0 | x1 | x4 | ~x5 | ~x6);
+  assign n122 = (~n88 | ~n123) & (n124 | (~x3 ^ x7));
+  assign n123 = ~x7 & x6 & x4 & x5;
+  assign n124 = (~x5 | n125) & (~x0 | x1 | ~n126);
+  assign n125 = (~x0 | x1 | x2 | x4 | ~x6) & (x0 | ~x1 | (x2 ? (~x4 | ~x6) : (x4 | x6)));
+  assign n126 = ~x6 & x4 & ~x5;
+  assign z04 = ~n144 | ~n149 | (x0 ? ~n138 : ~n128);
+  assign n128 = ~n131 & ~n134 & ~n137 & (~x2 | n129);
+  assign n129 = (~x6 | n130) & (x1 | (~x7 & (~x4 | x6)));
+  assign n130 = (~x3 | ((~x4 | x7) & (~x1 | x5 | ~x7))) & (~x4 | (x5 & (x1 | x7)));
+  assign n131 = ~x4 & (x2 ? ~n132 : ~n133);
+  assign n132 = (~x1 & (x7 | (x3 & ~x5))) | (~x5 & ((~x6 & ~x7) | (x3 & x6 & x7))) | (x3 & ~x6 & (x7 ? x5 : x1));
+  assign n133 = (~x1 & (~x3 | (x5 & x6 & x7))) | (~x3 & x5) | (~x5 & ~x6 & (x3 | ~x7));
+  assign n134 = x4 & (n135 | (~x2 & x3 & ~n136));
+  assign n135 = x1 & (~x6 | (~x2 & ~x3 & ~x5));
+  assign n136 = (~x5 | ~x6 | x7) & (x1 | ((x6 | x7) & (x5 | ~x6 | ~x7)));
+  assign n137 = x3 & x7 & n54 & (x5 | ~x6);
+  assign n138 = ~n139 & ~n143;
+  assign n139 = ~x6 & ((x1 & ~n140) | n142 | (~x1 & ~n141));
+  assign n140 = (x4 | ~x7 | ((x3 | ~x5) & (~x2 | (x3 & ~x5)))) & (x2 | ~x4 | x5 | x7);
+  assign n141 = (x2 | ((x3 | x4 | ~x7) & (x5 | x7 | ~x3 | ~x4))) & (~x5 | ~x7 | ~x2 | x4);
+  assign n142 = x7 & ~x5 & ~x4 & ~x2 & ~x3;
+  assign n143 = ~x4 & ((x5 & ~x7) | (x3 & (x2 ? (~x5 & x7) : x5)));
+  assign n144 = ~n145 & (x5 | x6 | ~x7 | n148);
+  assign n145 = x4 & (x2 ? ~n147 : ~n146);
+  assign n146 = x0 ? (x1 | x3 | (x5 & x6)) : (~x1 | ~x6 | (~x3 & ~x5));
+  assign n147 = (~x0 | ((~x5 | ~x6 | ~x1 | ~x3) & (x1 | x5 | x6))) & (x3 | ~x5 | ~x6 | x0 | ~x1);
+  assign n148 = (x2 | ~x3 | x4) & (x1 | (x2 ? (x3 | x4) : ~x3));
+  assign n149 = ~n150 & (~x6 | (~n153 & ~n157 & n158));
+  assign n150 = ~x4 & ((~x3 & ~n151) | (n97 & n152));
+  assign n151 = (~x0 | x5 | ~x6 | (~x1 ^ ~x2)) & (x2 | ~x5 | x0 | ~x1);
+  assign n152 = ~x6 & x5 & ~x0 & x3;
+  assign n153 = ~x4 & (n155 | ~n156 | (x0 & ~n154));
+  assign n154 = x1 ? (x2 | x5 | (x3 & x7)) : (~x2 | ~x7);
+  assign n155 = x7 & ~x5 & x3 & x1 & ~x2;
+  assign n156 = (x5 | x7 | ~x2 | ~x3) & (x3 | ~x5 | ~x7 | ~x0 | x2);
+  assign n157 = ~x3 & n69 & (x1 ? (x5 & x7) : (~x5 & ~x7));
+  assign n158 = ~x3 | x5 | ~n54 | (~x0 & x7);
+  assign z05 = ~n180 | (x1 ? (n170 | ~n173) : ~n160);
+  assign n160 = (~x3 | n161) & (x3 | n164) & (~x2 | n169);
+  assign n161 = x6 ? n162 : n163;
+  assign n162 = x0 ? ((~x2 & x4 & ~x5) | (x5 & (x2 | ~x4))) : (x7 & (x2 | (~x4 & ~x5)));
+  assign n163 = (x2 & ((~x5 & x7) | (~x4 & (~x0 | x7)))) | (~x5 & (x0 | (~x4 & ~x7)));
+  assign n164 = ~n168 & (n166 | n167) & (~x0 | n165);
+  assign n165 = (x4 | ((x2 | ~x7 | (x5 & x6)) & (~x6 | x7 | ~x2 | x5))) & (~x4 | ((~x5 | ~x6 | ~x7) & (~x2 | (x6 ? ~x7 : ~x5)))) & (x2 | ~x5 | ~x6 | x7);
+  assign n166 = ~x5 ^ x6;
+  assign n167 = (~x4 | x7 | x0 | ~x2) & (~x0 | x4 | (~x2 ^ ~x7));
+  assign n168 = x2 & ((x6 & ~x7 & x4 & x5) | (~x4 & ~x6 & (x5 ^ x7)));
+  assign n169 = (x0 | (~x7 & (x4 | ~x5 | x6))) & (~x0 | ~x4 | ~x5 | ~x6 | x7);
+  assign n170 = ~x0 & (x3 ? ~n171 : ~n172);
+  assign n171 = (~x2 | ~x7 | (x4 & (~x5 | ~x6))) & (x2 | x5 | (x6 ? x7 : ~x4)) & (x4 | ((~x6 | x7) & (~x5 | (~x6 & x7))));
+  assign n172 = (x4 | ((~x2 | (~x7 & (~x5 | x6))) & (~x5 | ~x7) & (x2 | ~x6 | x7))) & (x5 | x7 | x2 | ~x4);
+  assign n173 = ~n178 & (~x0 | (n175 & (x5 | n174)));
+  assign n174 = (x2 & x3 & (~x4 | (x6 & x7))) | (~x6 & ~x7 & (~x2 | ~x4));
+  assign n175 = (~x3 | n177) & (~x4 | ~n176 | ~x2 | x3);
+  assign n176 = x7 & x5 & x6;
+  assign n177 = (x2 | ~x5 | x6 | x7) & (~x2 | ~x6 | (x4 ? ~x5 : ~x7));
+  assign n178 = ~n179 & ~x2 & ~x3;
+  assign n179 = x5 ? (x6 | (~x4 & x7)) : ~x7;
+  assign n180 = (x4 | n181) & (~n112 | ~n72 | ~x4 | x5);
+  assign n181 = x3 ? n183 : (~n182 | ~n96);
+  assign n182 = ~x0 & x2;
+  assign n183 = (x5 | (x0 ? (x6 ? ~x2 : ~x7) : (x2 | ~x6))) & (x6 | ~x7 | x0 | x2);
+  assign z06 = ~n205 | n185 | n195;
+  assign n185 = ~x1 & (n186 | n190 | n193);
+  assign n186 = x3 & ((~x7 & ~n187) | n189 | (x7 & ~n188));
+  assign n187 = (~x5 & ((~x4 & ~x6) | (x4 & x6 & x0 & ~x2))) | (~x6 & ((x2 & x5) | (x0 & (x2 | x5)))) | (x2 & x4 & (x5 | (~x0 & x6)));
+  assign n188 = (~x0 | ~x2 | (~x4 ^ ~x6)) & (x4 | ~x5 | ~x6) & (x0 | x2 | (x6 & (~x4 | x5)));
+  assign n189 = ~x6 & x5 & ~x2 & x4;
+  assign n190 = ~x3 & ((x2 & ~n191) | (x0 & ~x2 & ~n192));
+  assign n191 = (~x4 | (x0 ? (x5 ? x6 : (~x6 | ~x7)) : (x6 | x7))) & (x7 | ((x4 | ~x6) & (x0 | (x5 ^ ~x6)))) & (x4 | (x5 ? ~x6 : (x6 | ~x7)));
+  assign n192 = (~x4 & (~x6 | (x5 & ~x7))) | (x4 & ~x5 & x6) | (x5 & ~x6);
+  assign n193 = ~x4 & n182 & (x7 | n194);
+  assign n194 = ~x7 & x5 & ~x6;
+  assign n195 = x1 & (n196 | n204 | (~x2 & ~n199));
+  assign n196 = x2 & (x3 ? ~n197 : ~n198);
+  assign n197 = ((~x4 | ~x7) & (x0 ? (~x5 & x6) : x5)) | (~x6 & (x4 ? (x7 & (x0 | x5)) : (~x5 & ~x7))) | (~x4 & x5 & x6 & ~x7);
+  assign n198 = (x5 | (x0 ? (x6 | ~x7) : (x4 ? (~x6 | x7) : ~x7))) & (~x5 | x6 | x7) & (~x0 | (x4 ? ((x6 | x7) & (~x5 | ~x6 | ~x7)) : (x6 | ~x7)));
+  assign n199 = ~n202 & ~n203 & (x0 ? n201 : n200);
+  assign n200 = (x3 & (x6 ? ~x4 : x7)) | (~x5 & ~x6 & ~x7) | (x5 & x6 & x7) | (x4 & ((~x5 & ~x7) | (~x3 & (~x6 | x7))));
+  assign n201 = (x3 | ((~x6 | x7) & (x4 | x6 | ~x7))) & (x5 | ((x6 | ~x7) & (x4 | ~x6 | x7)));
+  assign n202 = x3 & ((x5 & ~x6 & x7) | (x0 & x6 & ~x7));
+  assign n203 = x7 & x6 & x5 & ~x3 & x4;
+  assign n204 = n96 & ~x5 & ~x4 & ~x0 & ~x3;
+  assign n205 = ~n209 & (~x7 | (~n207 & (x2 | n206)));
+  assign n206 = (~x3 | ((x0 | ~x4 | ~x5 | ~x6) & (x4 | x5 | x6))) & (x5 | x6 | ~x0 | x4);
+  assign n207 = n208 & (x5 ? ~x6 : ~x0);
+  assign n208 = x4 & x2 & ~x3;
+  assign n209 = n120 & ~x4 & x3 & ~x0 & ~x2;
+  assign z07 = (x7 & ~n227) | (~x6 & ~n211) | (x6 & ~n220);
+  assign n211 = (~x7 | n219) & (x1 | n212) & (~x1 | n216);
+  assign n212 = (~x2 | n215) & (~x3 | ~n213) & (x2 | n214);
+  assign n213 = x4 & x5;
+  assign n214 = (x0 & ((x5 & x7) | (x3 & ~x5 & ~x7))) | (~x4 & ~x5 & ~x7) | (~x3 & (~x0 | x7 | (x4 & x5)));
+  assign n215 = (x0 | ((x4 | ~x5 | x7) & (x5 | ~x7 | ~x3 | ~x4))) & (x5 | ((x3 | x4 | ~x7) & (~x0 | (x7 ? x3 : ~x4)))) & (x4 | ~x7 | ~x0 | ~x3);
+  assign n216 = x4 ? n218 : n217;
+  assign n217 = (~x5 | ((~x2 | ~x3 | x7) & (~x0 | (x2 ? x7 : (x3 | ~x7))))) & (x0 | ~x7 | (x3 ? ~x2 : x5));
+  assign n218 = (~x3 & (x2 ? (x0 ^ ~x7) : x5)) | (x0 & ~x7 & (~x2 | x3)) | (~x2 & x3 & ~x5) | (x5 & x7);
+  assign n219 = (~x3 | ~x4 | ~x5) & (x4 | ((x2 | x5 | (~x0 & ~x3)) & (x3 | ~x5 | x0 | ~x2)));
+  assign n220 = x3 ? (x1 ? n226 : n225) : n221;
+  assign n221 = ~n224 & (x0 ? n222 : n223);
+  assign n222 = (~x2 | ((~x1 | ((x5 | x7) & (~x4 | ~x5 | ~x7))) & (x4 | ~x5 | x7) & (x1 | x5 | ~x7))) & (~x4 | ((x2 | ~x5 | x7) & (x1 | (x7 ? x5 : x2)))) & (x2 | x4 | ~x7 | (~x1 & ~x5));
+  assign n223 = (~x1 & (~x2 | (x4 & ~x7))) | (x7 & ((x4 & ~x5) | (x2 & (x5 ? ~x4 : x1)))) | (~x2 & (x4 ? ~x5 : (x5 & ~x7)));
+  assign n224 = ~x7 & x5 & x4 & ~x1 & x2;
+  assign n225 = x5 ? (x4 ? (~x0 | ~x7) : x2) : (x0 ? (x4 ^ ~x7) : (~x4 & x7));
+  assign n226 = (x0 & (~x2 | (x4 & x5 & x7))) | (~x0 & ((x4 & ~x7) | (x2 & (~x4 | ~x5)))) | (~x4 & ~x5 & x7) | (x4 & (x5 ? ~x2 : ~x7));
+  assign n227 = (~x0 | ~x1 | x2 | n228) & (x0 | x1 | ~n229);
+  assign n228 = ~x3 & (~x4 | x5);
+  assign n229 = ~x5 & x3 & ~x4;
+  assign z08 = ~n250 | (x3 ? ~n231 : (n240 | ~n245));
+  assign n231 = (x7 | n236) & (~n88 | ~n126) & (~x7 | n232);
+  assign n232 = ~n235 & (x4 | n233) & (x0 | n234);
+  assign n233 = (~x0 | (x1 ? (~x2 | (x5 & ~x6)) : (~x5 ^ x6))) & (~x5 | x6 | x1 | x2);
+  assign n234 = (x1 | (x2 ? (x6 | (x4 & x5)) : (~x5 | ~x6))) & (x5 | ((x4 | x6) & (x2 | (x4 & (~x1 | ~x6)))));
+  assign n235 = x6 & x5 & x4 & ~x1 & ~x2;
+  assign n236 = ~n239 & (x0 ? n238 : n237);
+  assign n237 = (~x1 & ((x4 & ~x5) | (x2 & ~x6))) | (~x2 & ((x4 & ~x6) | (x1 & ~x5))) | (~x4 & ~x5 & ~x6) | (x5 & x6 & x2 & x4);
+  assign n238 = (~x2 | ((x1 | ~x5 | x6) & (x5 | ~x6 | ~x1 | ~x4))) & (x1 | ~x5 | (~x4 ^ x6));
+  assign n239 = ~x4 & ~x5 & x6 & (~x1 ^ x2);
+  assign n240 = x0 & (~n242 | (~x2 & ~n241));
+  assign n241 = (x5 | ((x1 | ~x6 | x7) & (~x4 | (x7 ? ~x1 : ~x6)))) & (x1 | ~x5 | ~x7 | (x4 & ~x6));
+  assign n242 = (~n243 | ~n75) & (x6 | n244);
+  assign n243 = ~x1 & x2;
+  assign n244 = (~x1 | (x2 ? (x4 | ~x7) : (~x4 | x7))) & (x7 | ((x1 | (~x5 & (~x2 | ~x4))) & (~x2 | x4 | ~x5))) & (~x4 | x5 | ~x7 | x1 | x2);
+  assign n245 = ~n249 & (x0 | (~n247 & (~x2 | n246)));
+  assign n246 = (~x1 & (x5 | (x6 & x7))) | (x4 & x5 & x7) | (~x7 & (~x4 | (x1 & ~x5)));
+  assign n247 = n248 & ((~x5 & (x4 ^ (~x6 & x7))) | (x6 & x7 & ~x4 & x5));
+  assign n248 = x1 & ~x2;
+  assign n249 = n176 & ~x4 & ~x1 & x2;
+  assign n250 = (x0 | n254) & (~n88 | ~n123) & (~x0 | n251);
+  assign n251 = x2 ? n253 : n252;
+  assign n252 = (x4 | ~x5 | ~x6 | ~x1 | x3) & (~x4 | x5 | x6 | x1 | ~x3);
+  assign n253 = (~x4 | ((~x1 | ((~x5 | ~x6) & (~x3 | x5 | x6))) & (x5 | ~x6 | x1 | ~x3))) & (x3 | ~x6 | (x5 ? ~x1 : x4));
+  assign n254 = (~x5 | n255) & (~n256 | (x3 ? ~x4 : (x4 | x5)));
+  assign n255 = (x3 | ~x4 | ~x6 | x1 | ~x2) & (~x1 | ((x4 | x6 | x2 | x3) & (~x4 | ~x6 | ~x2 | ~x3)));
+  assign n256 = x6 & ~x1 & x2;
+  assign z09 = ~n277 | n258 | n266;
+  assign n258 = ~x0 & (n249 | n259 | n262);
+  assign n259 = ~x3 & ((n248 & ~n261) | (x2 & ~n260));
+  assign n260 = (~x1 | (x4 ? x5 : (~x5 | ~x6))) & (x1 | ~x6 | (x4 ? ~x7 : (x5 | x7))) & (x6 | (x4 ? (x5 | x7) : (~x5 | ~x7)));
+  assign n261 = (x5 | ((~x6 | x7) & (x4 | x6 | ~x7))) & (~x6 | (x7 ? ~x5 : ~x4));
+  assign n262 = x3 & ((~x7 & ~n263) | n265 | (x7 & ~n264));
+  assign n263 = (~x6 & ((~x1 & (x2 ? ~x5 : (x4 & x5))) | (~x4 & (~x5 | (x1 & ~x2))))) | (x1 & x4 & (x6 | (x2 & x5))) | (~x1 & ~x4 & (x2 | x6));
+  assign n264 = (~x6 | ((x2 | ~x4 | ~x5) & (~x1 | (~x5 & (x2 | ~x4))))) & (x1 | x5 | (x4 & (~x2 | x6))) & (~x2 | x4 | ~x5 | x6);
+  assign n265 = ~x4 & ~x5 & x6 & (x1 | ~x2);
+  assign n266 = x0 & ((x3 & ~n267) | ~n274 | (~x3 & ~n270));
+  assign n267 = (~x2 | n268) & (x1 | n269);
+  assign n268 = (x1 & (x4 ? (~x6 & x7) : (x5 & ~x7))) | (~x6 & (x4 ? x5 : ~x7)) | (x6 & (~x1 | ~x5) & (~x4 ^ ~x7)) | (~x5 & x7 & ~x1 & ~x4);
+  assign n269 = (x6 | x7 | ~x4 | ~x5) & (~x6 | ~x7 | x2 | x5);
+  assign n270 = x1 ? (n271 & (x6 | n272)) : (n273 & (~x6 | n272));
+  assign n271 = (x5 | ~x7 | x2 | ~x4) & (~x6 | ((~x2 | (x5 ? ~x4 : x7)) & (x5 | (x7 ? x2 : ~x4))));
+  assign n272 = (~x5 | ~x7 | x2 | x4) & (~x2 | ~x4 | x5 | x7);
+  assign n273 = x2 ? (x5 | (x4 ? (x6 | x7) : (~x6 | ~x7))) : ((x4 | x6 | ~x7) & (~x6 | (~x4 & x7)));
+  assign n274 = (~n194 | ~n275) & (n276 | (x4 & x6));
+  assign n275 = ~x4 & x1 & x2;
+  assign n276 = (x1 | ~x5 | x7 | (~x2 ^ x3)) & (~x1 | ~x2 | x3 | x5 | ~x7);
+  assign n277 = x3 ? (~n54 | n281) : n278;
+  assign n278 = (x6 | n279) & (x7 | ~n280 | ~x5 | ~x6);
+  assign n279 = x1 ? (x2 | ((~x4 | x5 | ~x7) & (~x5 | x7))) : (~x2 | x4 | (~x5 ^ x7));
+  assign n280 = x4 & ~x1 & x2;
+  assign n281 = (x5 | x6 | ~x7) & (~x6 | x7 | ~x4 | ~x5);
+  assign z10 = ~n300 | (x5 ? ~n283 : (n292 | ~n295));
+  assign n283 = ~n284 & ~n287 & (~x2 | x7 | n291);
+  assign n284 = ~x6 & ((~x7 & ~n285) | (~x4 & x7 & ~n286));
+  assign n285 = (x2 | ~x3 | ~x4 | x0 | ~x1) & (~x2 | ((x0 | (x4 & (x1 | x3))) & (x1 | x4) & (~x0 | ~x3)));
+  assign n286 = (~x3 & (~x0 | (~x1 & ~x2))) | (x1 & x2) | (x0 & x3);
+  assign n287 = x6 & ((x7 & ~n288) | n290 | (~x7 & ~n289));
+  assign n288 = x1 ? ((x2 | x3 | ~x4) & (x0 | (x2 ? (~x3 | ~x4) : x3))) : (x2 ? x4 : (~x3 | ~x4));
+  assign n289 = (x3 | (x0 ? (~x1 | ~x4) : (x1 ? (x2 | x4) : (~x2 | ~x4)))) & (~x3 | ~x4 | x0 | x2) & (x1 | x4 | ((~x2 | ~x3) & (~x0 | (~x2 & ~x3))));
+  assign n290 = ~x4 & x3 & x2 & x0 & x1;
+  assign n291 = (~x0 | ~x3 | ~x4) & (x3 | x4 | x0 | x1);
+  assign n292 = x2 & (x7 ? ~n293 : ~n294);
+  assign n293 = (x0 | ((~x1 | ~x6 | (~x3 & x4)) & (x6 | (~x4 & (x1 | x3))))) & (x6 | ((x1 | ~x4) & (~x0 | ~x3)));
+  assign n294 = x0 ? (x3 | (x1 ? (x4 | ~x6) : (~x4 | x6))) : ((~x1 | ~x6 | (~x3 & ~x4)) & (x1 | ~x3 | ~x4 | x6));
+  assign n295 = ~n299 & (x2 | (n297 & (~x6 | n296)));
+  assign n296 = x1 ? ((x3 | x4 | x7) & (x0 | (x3 & (~x4 | x7)))) : ((~x3 | (x4 ^ x7)) & (~x0 | (x3 ? x7 : (x4 | ~x7))));
+  assign n297 = x0 ? (x3 | ~n73) : (~x3 | n298);
+  assign n298 = x4 ? (x6 | x7) : (~x7 | (~x1 & x6));
+  assign n299 = n96 & ~x4 & ~x3 & ~x0 & x1;
+  assign n300 = ~n302 & n304 & (x3 | ~x4 | n301);
+  assign n301 = (~x0 | x7 | (x1 ? x6 : x2)) & (~x2 | ~x6 | ~x7 | x0 | ~x1);
+  assign n302 = ~n303 & x7 & x0 & ~x3;
+  assign n303 = (x4 | x6 | x1 | x2) & (~x1 | ((~x4 | ~x6) & (~x2 | x4 | x6)));
+  assign n304 = ~n54 | (x0 ? ~n57 : (~n112 | ~n305));
+  assign n305 = x3 & x4;
+  assign z11 = (~x6 & ~n317) | (x7 & ~n313) | (x6 & ~n307);
+  assign n307 = x2 ? n308 : (x1 ? n312 : n311);
+  assign n308 = x4 ? n310 : n309;
+  assign n309 = (x7 & ((x0 & (~x1 | (~x3 & x5))) | (x3 & ((~x1 & ~x5) | (~x0 & x1 & x5))))) | (x1 & (x0 ? (x3 & ~x7) : (~x3 & ~x5))) | (~x7 & ((~x3 & ~x5) | (~x0 & (~x3 | (~x1 & x5)))));
+  assign n310 = (x5 | ((x3 | ~x7) & (~x0 | (~x1 ^ ~x7)))) & (x0 | ((~x3 | ~x5 | ~x7) & (~x1 | x3 | x7))) & (~x5 | (x1 ? (x3 | x7) : ~x3));
+  assign n311 = (~x0 | ((x4 | x5 | ~x7) & (x3 | (x4 ? ~x5 : x7)))) & (~x3 | ((x0 | ~x5 | x7) & (~x4 | (~x5 ^ x7))));
+  assign n312 = (~x0 | (x3 ? x7 : (~x5 | ~x7))) & (x0 | (x3 ? (x4 ? x5 : (~x5 | ~x7)) : (x4 | x7))) & (x3 | ((x5 | x7) & (~x4 | ~x5 | ~x7)));
+  assign n313 = x3 ? (n315 & (x6 | n314)) : (x6 | n316);
+  assign n314 = (x0 | (~x4 & (~x1 | ~x2 | ~x5))) & (~x4 | ~x5) & (x1 | (x2 ? ~x0 : x5));
+  assign n315 = (~x0 | x2 | (~x1 & (x4 | ~x5))) & (x4 | x5 | x0 | x1);
+  assign n316 = (x1 & (x2 ? (~x4 & x5) : ~x5)) | (~x1 & (x2 ? ~x5 : ~x0)) | (~x2 & x4 & ~x5) | (~x0 & (x4 ^ x5));
+  assign n317 = ~n318 & (~n243 | ~n213 | ~x0 | x3);
+  assign n318 = ~x7 & ((x5 & ~n319) | (x4 & ~x5 & ~n320));
+  assign n319 = (x2 & ~x3 & ((x1 & x4) | (x0 & (x1 | x4)))) | (~x0 & ((x3 & ~x4) | (~x1 & ~x2))) | (~x1 & (x3 | (~x2 & x4)));
+  assign n320 = (x0 & (~x1 | (~x2 & ~x3))) | (~x1 & ~x2 & ~x3) | (x2 & x3 & ~x0 & x1);
+endmodule
+
+
