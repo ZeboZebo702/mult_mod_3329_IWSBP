@@ -1,0 +1,1678 @@
+/*
+ * Synopsys 28nm Standard Cell Library for ABC
+ * Based on Synopsys Fusion Compiler 28nm technology
+ *
+ * This library is intended for use with ABC (read_lib command)
+ * for Boolean function decomposition and technology mapping.
+ *
+ * Area values from Synopsys 28nm library (relative units).
+ * Timing/capacitance values are nominal placeholders.
+ */
+library(synopsys28nm) {
+
+  delay_model : table_lookup;
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1uA";
+  capacitive_load_unit (1,pf);
+
+  nom_voltage : 0.9;
+  nom_temperature : 25;
+
+  /* ============================== */
+  /* Inverter                       */
+  /* ============================== */
+  cell (INV) {
+    area : 0.34;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!A)";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.01"); }
+        cell_fall(scalar) { values("0.01"); }
+        rise_transition(scalar) { values("0.01"); }
+        fall_transition(scalar) { values("0.01"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* AND gates                      */
+  /* ============================== */
+  cell (AN2) {
+    area : 0.68;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(A B)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  cell (AN3) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A B) C)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AN4) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(((A B) C) D)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* OR gate                        */
+  /* ============================== */
+  cell (OR2) {
+    area : 0.68;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(A+B)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* NAND gates                     */
+  /* ============================== */
+  cell (ND2) {
+    area : 0.51;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!(A B))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  cell (ND2B) {
+    area : 0.68;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!(A !B))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  cell (ND3) {
+    area : 0.68;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B) C))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* NOR gate                       */
+  /* ============================== */
+  cell (NR2) {
+    area : 0.51;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!(A+B))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* AND-OR (AO) gates              */
+  /* ============================== */
+  cell (AO21) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A B)+C)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AO21B) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A !B)+C)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AO211) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A B)+C+D)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AO22) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A B)+(C D))";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* AND-OR-Invert (AOI) gates      */
+  /* ============================== */
+  cell (AOI21) {
+    area : 0.68;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B)+C))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  cell (AOI211) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B)+C+D))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AOI22) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B)+(C D)))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AOI221) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B)+(C D)+E))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  cell (AOI31) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B C)+D))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (AOI32) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B C)+(D E)))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  cell (AOI33) {
+    area : 1.18;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(F) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A B C)+(D E F)))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "F";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* OR-AND (OA) gates              */
+  /* ============================== */
+  cell (OA21) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A+B) C)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (OA21B) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A+!B) C)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* OR-AND-Invert (OAI) gates      */
+  /* ============================== */
+  cell (OAI21) {
+    area : 0.68;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A+B) C))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.02"); }
+        cell_fall(scalar) { values("0.02"); }
+        rise_transition(scalar) { values("0.02"); }
+        fall_transition(scalar) { values("0.02"); }
+      }
+    }
+  }
+
+  cell (OAI211) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A+B) C D))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  cell (OAI32) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A+B+C) (D+E)))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* Complex gates (AOA, AOAI, OAOI)*/
+  /* ============================== */
+
+  /* AOA211: Y = ((A|B) & (C|D)) | E */
+  cell (AOA211) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(((A+B) (C+D))+E)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  /* AOAI211: Y = !(((A|B) & (C|D)) | E) */
+  cell (AOAI211) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!(((A+B) (C+D))+E))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  /* OAOI211: Y = !((A|B) & C & (D|E)) */
+  cell (OAOI211) {
+    area : 0.84;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(D) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(E) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(!((A+B) C (D+E)))";
+      timing() {
+        related_pin : "A";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "D";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "E";
+        timing_sense : negative_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* Full Adder (ADDABCN2)          */
+  /* Split: 1.10 (SUM) + 1.09 (COUT) = 2.19 total */
+  /* ============================== */
+  cell (FA_SUM) {
+    area : 1.10;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A^B)^C)";
+      timing() {
+        related_pin : "A";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  cell (FA_COUT) {
+    area : 1.09;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(C) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((A B)+(C (A^B)))";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "C";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* XOR gate                       */
+  /* ============================== */
+  cell (EO2) {
+    area : 1.52;
+    pin(A) {
+      direction : input;
+      capacitance : 0.002;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.002;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(A^B)";
+      timing() {
+        related_pin : "A";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.04"); }
+        cell_fall(scalar) { values("0.04"); }
+        rise_transition(scalar) { values("0.04"); }
+        fall_transition(scalar) { values("0.04"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* MUX (inverted output)          */
+  /* MUXI2: Y = !S*A + S*!B        */
+  /* ============================== */
+  cell (MUXI2) {
+    area : 1.01;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(B) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(S) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "((!S A)+(S !B))";
+      timing() {
+        related_pin : "A";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "B";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "S";
+        timing_sense : non_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+  /* ============================== */
+  /* Enable gate (functionally AND) */
+  /* ============================== */
+  cell (EN2) {
+    area : 1.35;
+    pin(A) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(EN) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin(Y) {
+      direction : output;
+      function : "(A EN)";
+      timing() {
+        related_pin : "A";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+      timing() {
+        related_pin : "EN";
+        timing_sense : positive_unate;
+        cell_rise(scalar) { values("0.03"); }
+        cell_fall(scalar) { values("0.03"); }
+        rise_transition(scalar) { values("0.03"); }
+        fall_transition(scalar) { values("0.03"); }
+      }
+    }
+  }
+
+}
