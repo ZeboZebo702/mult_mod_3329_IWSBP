@@ -117,12 +117,7 @@ golden model of `A \* B mod 3329`, comparing obtained against expected results
 over several hundred test vectors, including the corner cases of the reduction
 path: operands producing the maximum accumulated sum, values falling in the
 interval that requires a second fold, and values requiring the final conditional
-subtraction. All designs pass with no mismatches. The golden model and
-testbenches are in `tb/`.
-
-At Kyber's operand width the complete input space is `2^24 = 16,777,216`
-combinations, so the designs are amenable to exhaustive verification. Exhaustive
-results will be added to this repository.
+subtraction.
 
 \---
 
