@@ -15,7 +15,6 @@ complete post-place-and-route and power results.
 |File|Content|
 |-|-|
 |`ASIC/ and FPGA/`|Synthesizable Verilog for all 50 designs, the `Standard` baseline and both references|
-\---|`tb/`\---|Testbenches and golden model|
 |`mult\_mod\_3329\_asic.xlsx`|Genus synthesis and Innovus post-PnR results: 3 libraries x 3 constraint modes, delay / cells / area / power|
 |`mult\_mod\_3329\_cadence.xlsx`, `mult\_mod\_3329\_synopsys.xlsx`|Per-vendor synthesis summaries|
 |`mult\_mod\_3329\_fpga.csv`|Vivado results: LUTs, FFs, DSPs, BRAMs, delay, Fmax, runtimes|
